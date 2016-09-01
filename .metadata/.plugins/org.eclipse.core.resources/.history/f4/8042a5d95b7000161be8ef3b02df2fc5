@@ -33,47 +33,6 @@ public class Calculate {
 	public static String toMixedNum(int x, int y){
 		int a = x/y;
 		int b = x%y;
-		return (a+"_"+b+"/"+y);
+		return a
 	}
-	
-	public static String foil(int a, int b, int c, int d, String var){
-		return ((a*c)+var+"^2 + "+(a*d+b*c)+var+" - "+(b*d));
-	}
-	
-	public static Boolean isDivisibleBy(int x, int y){
-		return x%y==0;
-	}
-	
-	public static double absValue(int x){
-		if(x<0){
-			x=-x;
-			return x;
-		}
-		else{
-			return x;
-		}
-	}
-	
-	public static int max(int x, int y){
-		if(x>=y){
-			return x;
-		}
-		else{
-			return y;
-		}
-	}
-	
-	public static int max(int x, int y, int z){
-		if(x>=y && x>=z){
-			return x;
-		}
-		else if(y>x && y>=z){
-			return y;
-		}
-		else{
-			return z;
-		}
-	}
-	
-	
 }
