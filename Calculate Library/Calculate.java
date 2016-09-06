@@ -82,8 +82,8 @@ public class Calculate {
 	}
 	
 	public static double round2(double x){
-		double a = x*100;
-		a = int b;
+		int a= x*100;
+		
 		
 	}
 }
