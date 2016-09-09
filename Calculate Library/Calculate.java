@@ -86,4 +86,12 @@ public class Calculate {
 		
 		
 	}
+	
+	public static double exponent(double num, int exp){
+		double x = num;
+		for(var i = 1; i < exp; i++){
+			x = x * num;
+		}
+		return num;
+	}
 }
