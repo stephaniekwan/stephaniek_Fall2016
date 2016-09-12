@@ -82,8 +82,16 @@ public class Calculate {
 	}
 	
 	public static double round2(double x){
-		double a = x*100;
-		a = int b;
+		int a= x*100;
 		
+		
+	}
+	
+	public static double exponent(double num, int exp){
+		double x = num;
+		for(var i = 1; i < exp; i++){
+			x = x * num;
+		}
+		return num;
 	}
 }

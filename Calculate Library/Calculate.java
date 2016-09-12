@@ -94,4 +94,24 @@ public class Calculate {
 		}
 		return num;
 	}
+	
+	public static int factorial(int x){
+		int num = 1;
+		for(int i = x; i >= 1; i--){
+			num *= i;
+		}
+		return num;
+	}
+	
+	public static boolean isPrime(int x){
+		boolean bool;
+		for(int i = 2; i < x; i++){
+			num = Calculate.isDivisibleBy(i);
+		}
+		return bool;
+	}
+	
+	public static int gcf(int x, int y){
+		
+	}
 }
