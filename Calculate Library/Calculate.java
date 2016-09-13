@@ -104,11 +104,12 @@ public class Calculate {
 	}
 	
 	public static boolean isPrime(int x){
-		boolean bool;
 		for(int i = 2; i < x; i++){
-			num = Calculate.isDivisibleBy(i);
+			if(Calculate.isDivisibleBy(x,i)){
+				return false;
+			}
 		}
-		return bool;
+		return true;
 	}
 	
 	public static int gcf(int x, int y){
