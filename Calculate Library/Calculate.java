@@ -81,10 +81,14 @@ public class Calculate {
 		}
 	}
 	
-	public static double round2(double x){
-		int a= x*100;
-		
-		
+	public static double round2(double a){
+		double x = a*1000;
+		double y = x%10;
+		if(y>=5){
+			return (x-y+10)/1000;
+		}else{
+			return (x-y)/1000;
+		}
 	}
 	
 	public static double exponent(double num, int exp){
@@ -113,6 +117,16 @@ public class Calculate {
 	}
 	
 	public static int gcf(int x, int y){
+		int gcf = 1;
+		for(int i = 2; i <= x; i++){
+			if(isDivisibleBy(x,i) && isDivisibleBy(y,i)){
+				gcf = i;
+			}
+		}
+		return gcf;
+	}
+	
+	public static double sqrt(double x){
 		
 	}
 }
