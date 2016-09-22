@@ -149,14 +149,3 @@ public class Calculate {
 		}
 	}
 
-	public static String quadFormula(int a, int b, int c){
-		double discriminant = discriminant(a, b, c);
-		if(discriminant<0){
-			return "no real roots";
-		}
-		if(discriminant==0){
-			double num = (-1*b)/2*a;
-			return (num + " ");
-		}
-	}
-

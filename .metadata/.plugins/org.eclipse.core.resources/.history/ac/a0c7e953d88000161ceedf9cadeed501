@@ -41,9 +41,6 @@ public class Calculate {
 	}
 	
 	public static Boolean isDivisibleBy(int x, int y){
-		if(y == 0){
-			throw new IllegalArgumentException("Your second number cannot be 0.");
-		}
 		return x%y==0;
 	}
 	
@@ -95,9 +92,6 @@ public class Calculate {
 	}
 	
 	public static double exponent(double num, int exp){
-		if(exp<=0){
-			throw new IllegalArgumentException("Your second number must be greater than 0.");
-		}
 		double x = num;
 		for(var i = 1; i < exp; i++){
 			x = x * num;
@@ -106,9 +100,6 @@ public class Calculate {
 	}
 	
 	public static int factorial(int x){
-		if(x<=0){
-			throw new IllegalArgumentException("Enter a number greater than 0.");
-		}
 		int num = 1;
 		for(int i = x; i >= 1; i--){
 			num *= i;
@@ -136,27 +127,6 @@ public class Calculate {
 	}
 	
 	public static double sqrt(double x){
-		if(x<0){
-			throw new IllegalArgumentException("Enter a number that is 0 or greater.");
-		}
-		double y;
-		double sqrt = x/2;
-		do {
-			y = sqrt;
-			sqrt = (y + (x/y) / 2);
-		} while((x-sqrt) != 0);
-		return Calculate.round2(sqrt);
-		}
+		
 	}
-
-	public static String quadFormula(int a, int b, int c){
-		double discriminant = discriminant(a, b, c);
-		if(discriminant<0){
-			return "no real roots";
-		}
-		if(discriminant==0){
-			double num = (-1*b)/2*a;
-			return (num + " ");
-		}
-	}
-
+}
