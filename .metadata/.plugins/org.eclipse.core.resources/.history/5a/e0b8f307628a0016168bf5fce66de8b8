@@ -102,7 +102,7 @@ public class Calculate {
 	}
 	
 	//this method returns the smaller of 2 values passed
-	public static int min(int num1, int num2){
+	public static double min(double num1, double num2){
 		if(num1<=num2){
 			return num1;
 		}else{
@@ -111,77 +111,71 @@ public class Calculate {
 	}
 	
 	//this method returns a double rounded to 2 decimal places
-	public static double round2(double num){ 
-		double a = num*1000; //gets rid of decimals
-		double y = x%10; //takes remainder to determine whether to round up or down
+	public static double round2(double num){
+		double  = num*1000;
+		double y = x%10;
 		if(y>=5){
-			return (x-y+10)/1000; // add ten to round up
+			return (x-y+10)/1000;
 		}else{
 			return (x-y)/1000;
 		}
 	}
 	
-	//this method raises a value to a positive integer power
 	public static double exponent(double num, int exp){
 		if(exp<=0){
 			throw new IllegalArgumentException("Your second number must be greater than 0.");
 		}
-		double x = num; //variable to store the multiplied number
+		double x = num;
 		for(var i = 1; i < exp; i++){
 			x = x * num;
 		}
-		return x;
+		return num;
 	}
 	
-	//this method returns the factorial of the value passed
-	public static int factorial(int num){
-		if(num<=0){
+	public static int factorial(int x){
+		if(x<=0){
 			throw new IllegalArgumentException("Enter a number greater than 0.");
 		}
-		int value = 1;
-		for(int i = num; i >= 1; i--){
-			value *= i;
+		int num = 1;
+		for(int i = x; i >= 1; i--){
+			num *= i;
 		}
-		return value;
+		return num;
 	}
-
-	//this method determines whether or not an integer is prime
-	public static boolean isPrime(int num){
-		for(int i = 2; i < num; i++){
-			if(Calculate.isDivisibleBy(num,i)){
+	
+	public static boolean isPrime(int x){
+		for(int i = 2; i < x; i++){
+			if(Calculate.isDivisibleBy(x,i)){
 				return false;
 			}
 		}
 		return true;
 	}
 	
-	//this method finds the greatest common factor of 2 integers
-	public static int gcf(int num1, int num2){
+	public static int gcf(int x, int y){
 		int gcf = 1;
-		for(int i = 2; i <= num1; i++){
-			if(isDivisibleBy(num1,i) && isDivisibleBy(num2,i)){
+		for(int i = 2; i <= x; i++){
+			if(isDivisibleBy(x,i) && isDivisibleBy(y,i)){
 				gcf = i;
 			}
 		}
 		return gcf;
 	}
 	
-	//this method returns the square root of a number rounded to 2 decimal places
-	public static double sqrt(double num1){
-		if(num1<0){
+	public static double sqrt(double x){
+		if(x<0){
 			throw new IllegalArgumentException("Enter a number that is 0 or greater.");
 		}
-		double num2;
-		double sqrt = num1/2;
+		double y;
+		double sqrt = x/2;
 		do {
-			num2 = sqrt;
-			sqrt = (num2 + (num1/num2))/ 2;
-		} while((num1-sqrt) != 0);
+			y = sqrt;
+			sqrt = (y + (x/y) / 2);
+		} while((x-sqrt) != 0);
 		return Calculate.round2(sqrt);
 		}
 	}
 
-	//this method returns the roots of a quadratic formula
 	public static String quadFormula(int a, int b, int c){
 		double discriminant = discriminant(a, b, c);
 		if(discriminant<0){
@@ -194,13 +188,8 @@ public class Calculate {
 		if(discriminant>0){
 			double num1 = ((-1*b)+sqrt(discriminant))/(2*a);
 			double num2 = ((-1*b)-sqrt(discriminant))/(2*a);
-			if(num1>num2){
-				double smallerNum = num2;
-				double largerNum = num1;
-			}else{
-				double smallerNum = num1;
-				double largerNum = num2;
-			}
+			double smallerNum = min(num1, num2);
+			double largerNum = max(num1, num2);
 			return (smallerNum + " and " + largerNum);
 		}
 	}
