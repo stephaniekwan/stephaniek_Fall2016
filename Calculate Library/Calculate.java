@@ -1,71 +1,96 @@
+/* Stephanie Kwan
+ * APCS Period 1
+ * Date: September 24, 2016
+ * This program is a series of methods that calculate different
+ * mathematical operations.
+ */
+
 
 public class Calculate {
 	
-	public static double square(double x){
-		return x*x;
+	//this method returns the square of an integer.
+	public static int square(int num){
+		return num*num;
 	}
 	
-	public static double cube(double x){
-		return x*x*x;
+	// this method returns the cube of an integer
+	public static int cube(int num){
+		return num*num*num;
+	}
+
+	// this method returns the average of 2 doubles.
+	public static double average(double num1, double num2){
+		return (num1+num2)/2;
 	}
 	
-	public static double average(double x, double y){
-		return (x+y)/2;
+	//this method returns the average of 3 doubles
+	public static double average(double num1, double num2, double num3){
+		return (num1+num2+num3)/3;
 	}
 	
-	public static double toDegrees(double x){
-		return (x*180)/3.14159;
+	//this method converts a number in radians to degrees
+	public static double toDegrees(double radians){
+		return (radians*180)/3.14159;
 	}
 	
-	public static double toRadians(double x){
-		return (x*3.14159)/180;
+	//this method converts a number in degrees to radians
+	public static double toRadians(double degrees){
+		return (degrees*3.14159)/180;
 	}
 	
+	//this method gets the discriminant with an input of 3 doubles
 	public static double discriminant(double a, double b, double c){
 		return (b*b)-(4*a*c);
 	}
 	
-	public static String toImproperFraction(double x, double y, double z){
-		double a = x*z + y;
-		return a+"/"+z;
+	//this method converts a mixed number to an improper fraction
+	public static String toImproperFraction(double wholeNum, double numer, double denom){
+		double newNumerator = wholeNum*denom + numer;
+		return newNumerator+"/"+denom;
 	}
 	
-	public static String toMixedNum(int x, int y){
-		int a = x/y;
-		int b = x%y;
-		return (a+"_"+b+"/"+y);
+	//this method converts an improper fraction to a mixed number
+	public static String toMixedNum(int numer, int denom){
+		int wholeNum = numer/denom;
+		int newNumer = numer%denom; 
+		return (wholeNum+"_"+newNumer+"/"+denom);
 	}
 	
-	public static String foil(int a, int b, int c, int d, String var){
-		return ((a*c)+var+"^2 + "+(a*d+b*c)+var+" - "+(b*d));
+	//this method converts a binomial multiplication of the form into a quadratic equation
+	public static String foil(int num1, int num2, int num3, int num4, String var){
+		return ((num1*num3)+var+"^2 + "+((num1*num4)+(num2*num3))+var+" - "+(num2*num4));
 	}
 	
-	public static Boolean isDivisibleBy(int x, int y){
-		if(y == 0){
+	//this method determines whether or not one integer is evenly divisible by another.
+	public static Boolean isDivisibleBy(int num, int divisor){
+		if(divisor == 0){
 			throw new IllegalArgumentException("Your second number cannot be 0.");
 		}
-		return x%y==0;
+		return num%divisor==0;
 	}
 	
-	public static double absValue(int x){
-		if(x<0){
-			x=-x;
-			return x;
+	//this method returns the absolute value of the number passed
+	public static double absValue(double num){
+		if(num<0){
+			num=-num;
+			return num;
 		}
 		else{
-			return x;
+			return num;
 		}
 	}
 	
-	public static int max(int x, int y){
-		if(x>=y){
-			return x;
+	//this method returns the larger of 2 numbers
+	public static int max(int num1, int num2){
+		if(num1>=num2){
+			return num1;
 		}
 		else{
-			return y;
+			return num2;
 		}
 	}
 	
+	//this method returns the largest  of 3 numbers
 	public static double max(double x, double y, double z){
 		if(x>=y && x>=z){
 			return x;
@@ -76,6 +101,7 @@ public class Calculate {
 		}
 	}
 	
+	//this method returns the smaller of 2 values passed
 	public static double min(double num1, double num2){
 		if(num1<=num2){
 			return num1;
@@ -84,8 +110,9 @@ public class Calculate {
 		}
 	}
 	
-	public static double round2(double a){
-		double x = a*1000;
+	//this method returns a double rounded to 2 decimal places
+	public static double round2(double num){
+		double  = num*1000;
 		double y = x%10;
 		if(y>=5){
 			return (x-y+10)/1000;
