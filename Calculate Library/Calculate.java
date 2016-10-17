@@ -44,8 +44,8 @@ public class Calculate {
 	}
 	
 	//this method converts a mixed number to an improper fraction
-	public static String toImproperFraction(double wholeNum, double numer, double denom){
-		double newNumerator = wholeNum*denom + numer;
+	public static String toImproperFrac(int wholeNum, int numer, int denom){
+		int newNumerator = wholeNum*denom + numer;
 		return newNumerator+"/"+denom;
 	}
 	
@@ -53,12 +53,25 @@ public class Calculate {
 	public static String toMixedNum(int numer, int denom){
 		int wholeNum = numer/denom;
 		int newNumer = numer%denom; 
-		return (wholeNum+"_"+newNumer+"/"+denom);
+		if (newNumer == 0){
+			return wholeNum + "";
+		}else{
+			return (wholeNum+"_"+newNumer+"/"+denom);
+		}
 	}
 	
 	//this method converts a binomial multiplication of the form into a quadratic equation
 	public static String foil(int num1, int num2, int num3, int num4, String var){
-		return ((num1*num3)+var+"^2 + "+((num1*num4)+(num2*num3))+var+" - "+(num2*num4));
+		if(num2 * num4 < 0){
+			int constant = num2 * num4;
+			if(constant<=0){
+				constant *= -1;
+			}
+			return ((num1*num3)+var+"^2 + "+((num1*num4)+(num2*num3))+var+" – "+constant);
+
+		}else{
+			return ((num1*num3)+var+"^2 + "+((num1*num4)+(num2*num3))+var+" + "+(num2 * num4));
+		}
 	}
 	
 	//this method determines whether or not one integer is evenly divisible by another.
@@ -112,7 +125,7 @@ public class Calculate {
 	
 	//this method returns a double rounded to 2 decimal places
 	public static double round2(double num){ 
-		double a = num*1000; //gets rid of decimals
+		double x = num*1000; //gets rid of decimals
 		double y = x%10; //takes remainder to determine whether to round up or down
 		if(y>=5){
 			return (x-y+10)/1000; // add ten to round up
@@ -127,7 +140,7 @@ public class Calculate {
 			throw new IllegalArgumentException("Your second number must be greater than 0.");
 		}
 		double x = num; //variable to store the multiplied number
-		for(var i = 1; i < exp; i++){
+		for(int i = 1; i < exp; i++){
 			x = x * num;
 		}
 		return x;
@@ -178,30 +191,26 @@ public class Calculate {
 			sqrt = (num2 + (num1/num2))/ 2;
 		} while((num1-sqrt) != 0);
 		return Calculate.round2(sqrt);
-		}
 	}
 
 	//this method returns the roots of a quadratic formula
-	public static String quadFormula(int a, int b, int c){
+	public static String quadForm(int a, int b, int c){
 		double discriminant = discriminant(a, b, c);
+		
 		if(discriminant<0){
 			return "no real roots";
-		}
-		if(discriminant==0){
+		}else if(discriminant==0){
 			double num = (-1*b)/2*a;
 			return (round2(num) + " ");
-		}
-		if(discriminant>0){
+		}else{
 			double num1 = ((-1*b)+sqrt(discriminant))/(2*a);
 			double num2 = ((-1*b)-sqrt(discriminant))/(2*a);
 			if(num1>num2){
-				double smallerNum = num2;
-				double largerNum = num1;
+				return(num2 + " and " + num1);
 			}else{
-				double smallerNum = num1;
-				double largerNum = num2;
+				return(num1 + " and " + num2);
 			}
-			return (smallerNum + " and " + largerNum);
 		}
 	}
+}
 
