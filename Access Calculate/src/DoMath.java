@@ -1,10 +1,10 @@
 
-import java.util.Date;
+//import java.util.Date;
 
 public class DoMath {
 
 	public static void main(String[] args) {
-
+		
 		testDoMath("testing square with 5", 25, Calculate.square(5));
 		testDoMath("testing square with -2", 4, Calculate.square(-2));
 		testDoMath("testing cube with 3", 27, Calculate.cube(3));
@@ -95,4 +95,5 @@ public class DoMath {
 				System.out.println(testDesc + " failed! Returned " + testAns + " instead of " + rightAns);
 			}
 		}
+		
 }

@@ -179,18 +179,22 @@ public class Calculate {
 		return gcf;
 	}
 	
-	//this method returns the square root of a number rounded to 2 decimal places
-	public static double sqrt(double num1){
+	//this method returns the square root of a number rounded to 2 decimal places	
+	public static double sqrt(double num1) {
 		if(num1<0){
 			throw new IllegalArgumentException("Enter a number that is 0 or greater.");
 		}
+		
 		double num2;
-		double sqrt = num1/2;
+	 
+		double squareRoot = num1 / 2;
+	 
 		do {
-			num2 = sqrt;
-			sqrt = (num2 + (num1/num2))/ 2;
-		} while((num1-sqrt) != 0);
-		return Calculate.round2(sqrt);
+			num2 = squareRoot;
+			squareRoot = (num2 + (num1 / num2)) / 2;
+		} while ((num2 - squareRoot) != 0);
+	 
+		return round2(squareRoot);
 	}
 
 	//this method returns the roots of a quadratic formula
@@ -201,14 +205,14 @@ public class Calculate {
 			return "no real roots";
 		}else if(discriminant==0){
 			double num = (-1*b)/2*a;
-			return (round2(num) + " ");
+			return (String.format("%.2f", round2(num)) + "");
 		}else{
 			double num1 = ((-1*b)+sqrt(discriminant))/(2*a);
 			double num2 = ((-1*b)-sqrt(discriminant))/(2*a);
 			if(num1>num2){
-				return(num2 + " and " + num1);
+				return(String.format("%.2f",num2) + " and " + String.format("%.2f", num1));
 			}else{
-				return(num1 + " and " + num2);
+				return(String.format("%.2f", num1) + " and " + String.format("%.2f", num2));
 			}
 		}
 	}

@@ -1,0 +1,216 @@
+/* Stephanie Kwan
+ * APCS Period 1
+ * Date: September 24, 2016
+ * This program is a series of methods that calculate different
+ * mathematical operations.
+ */
+
+
+public class Calculate {
+	
+	//this method returns the square of an integer.
+	public static int square(int num){
+		return num*num;
+	}
+	
+	// this method returns the cube of an integer
+	public static int cube(int num){
+		return num*num*num;
+	}
+
+	// this method returns the average of 2 doubles.
+	public static double average(double num1, double num2){
+		return (num1+num2)/2;
+	}
+	
+	//this method returns the average of 3 doubles
+	public static double average(double num1, double num2, double num3){
+		return (num1+num2+num3)/3;
+	}
+	
+	//this method converts a number in radians to degrees
+	public static double toDegrees(double radians){
+		return (radians*180)/3.14159;
+	}
+	
+	//this method converts a number in degrees to radians
+	public static double toRadians(double degrees){
+		return (degrees*3.14159)/180;
+	}
+	
+	//this method gets the discriminant with an input of 3 doubles
+	public static double discriminant(double a, double b, double c){
+		return (b*b)-(4*a*c);
+	}
+	
+	//this method converts a mixed number to an improper fraction
+	public static String toImproperFrac(int wholeNum, int numer, int denom){
+		int newNumerator = wholeNum*denom + numer;
+		return newNumerator+"/"+denom;
+	}
+	
+	//this method converts an improper fraction to a mixed number
+	public static String toMixedNum(int numer, int denom){
+		int wholeNum = numer/denom;
+		int newNumer = numer%denom; 
+		if (newNumer == 0){
+			return wholeNum + "";
+		}else{
+			return (wholeNum+"_"+newNumer+"/"+denom);
+		}
+	}
+	
+	//this method converts a binomial multiplication of the form into a quadratic equation
+	public static String foil(int num1, int num2, int num3, int num4, String var){
+		if(num2 * num4 < 0){
+			int constant = num2 * num4;
+			if(constant<=0){
+				constant *= -1;
+			}
+			return ((num1*num3)+var+"^2 + "+((num1*num4)+(num2*num3))+var+" – "+constant);
+
+		}else{
+			return ((num1*num3)+var+"^2 + "+((num1*num4)+(num2*num3))+var+" + "+(num2 * num4));
+		}
+	}
+	
+	//this method determines whether or not one integer is evenly divisible by another.
+	public static Boolean isDivisibleBy(int num, int divisor){
+		if(divisor == 0){
+			throw new IllegalArgumentException("Your second number cannot be 0.");
+		}
+		return num%divisor==0;
+	}
+	
+	//this method returns the absolute value of the number passed
+	public static double absValue(double num){
+		if(num<0){
+			num=-num;
+			return num;
+		}
+		else{
+			return num;
+		}
+	}
+	
+	//this method returns the larger of 2 numbers
+	public static int max(int num1, int num2){
+		if(num1>=num2){
+			return num1;
+		}
+		else{
+			return num2;
+		}
+	}
+	
+	//this method returns the largest  of 3 numbers
+	public static double max(double x, double y, double z){
+		if(x>=y && x>=z){
+			return x;
+		}else if(y>x && y>=z){
+			return y;
+		}else{
+			return z;
+		}
+	}
+	
+	//this method returns the smaller of 2 values passed
+	public static int min(int num1, int num2){
+		if(num1<=num2){
+			return num1;
+		}else{
+			return num2;
+		}
+	}
+	
+	//this method returns a double rounded to 2 decimal places
+	public static double round2(double num){ 
+		double x = num*1000; //gets rid of decimals
+		double y = x%10; //takes remainder to determine whether to round up or down
+		if(y>=5){
+			return (x-y+10)/1000; // add ten to round up
+		}else{
+			return (x-y)/1000;
+		}
+	}
+	
+	//this method raises a value to a positive integer power
+	public static double exponent(double num, int exp){
+		if(exp<=0){
+			throw new IllegalArgumentException("Your second number must be greater than 0.");
+		}
+		double x = num; //variable to store the multiplied number
+		for(int i = 1; i < exp; i++){
+			x = x * num;
+		}
+		return x;
+	}
+	
+	//this method returns the factorial of the value passed
+	public static int factorial(int num){
+		if(num<=0){
+			throw new IllegalArgumentException("Enter a number greater than 0.");
+		}
+		int value = 1;
+		for(int i = num; i >= 1; i--){
+			value *= i;
+		}
+		return value;
+	}
+
+	//this method determines whether or not an integer is prime
+	public static boolean isPrime(int num){
+		for(int i = 2; i < num; i++){
+			if(Calculate.isDivisibleBy(num,i)){
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	//this method finds the greatest common factor of 2 integers
+	public static int gcf(int num1, int num2){
+		int gcf = 1;
+		for(int i = 2; i <= num1; i++){
+			if(isDivisibleBy(num1,i) && isDivisibleBy(num2,i)){
+				gcf = i;
+			}
+		}
+		return gcf;
+	}
+	
+	//this method returns the square root of a number rounded to 2 decimal places
+	public static double sqrt(double num1){
+		if(num1<0){
+			throw new IllegalArgumentException("Enter a number that is 0 or greater.");
+		}
+		double num2;
+		double sqrt = num1/2;
+		do {
+			num2 = sqrt;
+			sqrt = (num2 + (num1/num2))/ 2;
+		} while((num1-sqrt) != 0);
+		//return Calculate.round2(sqrt);
+	}
+
+	//this method returns the roots of a quadratic formula
+	public static String quadForm(int a, int b, int c){
+		double discriminant = discriminant(a, b, c);
+		
+		if(discriminant<0){
+			return "no real roots";
+		}else if(discriminant==0){
+			double num = (-1*b)/2*a;
+			return (round2(num) + " ");
+		}else{
+			double num1 = ((-1*b)+sqrt(discriminant))/(2*a);
+			double num2 = ((-1*b)-sqrt(discriminant))/(2*a);
+			if(num1>num2){
+				return(num2 + " and " + num1);
+			}else{
+				return(num1 + " and " + num2);
+			}
+		}
+	}
+}
+
